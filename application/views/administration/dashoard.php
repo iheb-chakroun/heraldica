@@ -206,7 +206,7 @@
 						<a class="dropdown-item" href="#">Action</a>
 						<a class="dropdown-item" href="#">Another action</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="connect/logout">Logout</a>
+						<a class="dropdown-item" href="<?php echo base_url() ?>admin/connect/logout">Logout</a>
 					</div>
 				</li>
 			</ul>
@@ -219,7 +219,7 @@
 				</div>
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a href="#" class="nav-links d-block"><i class="fa fa-home pr-2"></i> HOME</a>
+						<a href="<?php echo base_url() ?>" class="nav-links d-block"><i class="fa fa-home pr-2"></i> HOME</a>
 					</li>
 					<li class="nav-item">
 						<a href="#" class="nav-links d-block"><i class="fa fa-home pr-2"></i> HOME</a>
@@ -241,7 +241,7 @@
 	  				<h5>Company Name</h5>
 	  			</div> -->
 				<div class="icons d-flex flex-column align-items-center">
-					<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-home"></i></a>
+					<a href="<?php echo base_url() ?>" class="set-width text-center display-inline-block my-1"><i class="fa fa-home"></i></a>
 					<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-users"></i></a>
 					<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-list"></i></a>
 					<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-sticky-note-o"></i></a>

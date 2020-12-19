@@ -14,6 +14,7 @@ class Connect extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->library('encrypt');
 		$this->load->model('login_model');
+		$this->load->library('session');
 	}
 
 	public function index()
@@ -38,13 +39,16 @@ class Connect extends CI_Controller
 		}
 	}
 
+
 	public function logout()
 	{
-		$data = $this->session->all_userdata();
-		echo $data;
-		foreach ($data as $row => $rows_value) {
-			$this->session->unset_userdata($row);
+		$user_data = $this->session->all_userdata();
+		foreach ($user_data as $key => $value) {
+			if ($key != 'session_id' && $key != 'ip_address' && $key != 'user_agent' && $key != 'last_activity') {
+				$this->session->unset_userdata($key);
+			}
 		}
-		redirect('login');
+		$this->session->sess_destroy();
+		redirect('default_controller');
 	}
 }

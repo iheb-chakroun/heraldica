@@ -36,19 +36,19 @@
 	</div><br /><br />
 
 
-	<form method="post" action="connect/login">
+	<form method="post" action="<?php echo base_url() ?>admin/connect/login">
 		<div class="input-group">
 			<div class="input-group-prepend">
 				<span class="input-group-text"><i class="fas fa-user-tie"></i></span>
 			</div>
-			<input type="text" name="username" value="<?php echo set_value('username'); ?>" class="form-control" placeholder="username" />
+			<input type="text" name="username" value="<?php echo set_value('username'); ?>" class="form-control" placeholder="username" required />
 		</div><br />
 
 		<div class="input-group">
 			<div class="input-group-prepend">
 				<span class="input-group-text"><i class="fa fa-key icon"></i></span>
 			</div>
-			<input type="Password" name="password" class="form-control" placeholder="password" />
+			<input type="Password" name="password" class="form-control" placeholder="password" required />
 		</div><br />
 		<br />
 		<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-off"></span> Login</button>
