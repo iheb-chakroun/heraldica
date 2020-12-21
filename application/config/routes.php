@@ -6,6 +6,8 @@ $route['admin/connect'] = 'connect';
 $route['admin/connect/login'] = 'connect/login';
 $route['admin/connect/logout'] = 'connect/logout';
 $route['admin/dashboard'] = 'dashboard';
+$route['admin/dashboard/update'] = 'ckeditor/CkeditorController';
+
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

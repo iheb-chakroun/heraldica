@@ -1,314 +1,273 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+?>
 
-<!doctype html>
-<html lang="en">
+<html>
 
 <head>
-	<!-- Required meta tags -->
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Bootstrap 4 Dashboard</title>
+	<base target="_self">
+	<meta name="description" content="A Bootstrap 4 admin dashboard theme that will get you started. The sidebar toggles off-canvas on smaller screens. This example also include large stat blocks, modal and cards. The top navbar is controlled by a separate hamburger toggle button." />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google" value="notranslate">
+	<link rel="shortcut icon" href="/images/cp_ico.png">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<title>Infantry</title>
+	<!--stylesheets / link tags loaded here-->
+
+
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
+	<style type="text/css">
+		body,
+		html {
+			height: 100%;
+		}
+
+		/* workaround modal-open padding issue */
+
+		body.modal-open {
+			padding-right: 0 !important;
+		}
+
+		#sidebar {
+			padding-left: 0;
+		}
+
+		/*
+ * Off Canvas at medium breakpoint
+ * --------------------------------------------------
+ */
+
+		@media screen and (max-width: 48em) {
+			.row-offcanvas {
+				position: relative;
+				-webkit-transition: all 0.25s ease-out;
+				-moz-transition: all 0.25s ease-out;
+				transition: all 0.25s ease-out;
+			}
+
+			.row-offcanvas-left .sidebar-offcanvas {
+				left: -33%;
+			}
+
+			.row-offcanvas-left.active {
+				left: 33%;
+				margin-left: -6px;
+			}
+
+			.sidebar-offcanvas {
+				position: absolute;
+				top: 0;
+				width: 33%;
+				height: 100%;
+			}
+		}
+
+		/*
+ * Off Canvas wider at sm breakpoint
+ * --------------------------------------------------
+ */
+
+		@media screen and (max-width: 34em) {
+			.row-offcanvas-left .sidebar-offcanvas {
+				left: -45%;
+			}
+
+			.row-offcanvas-left.active {
+				left: 45%;
+				margin-left: -6px;
+			}
+
+			.sidebar-offcanvas {
+				width: 45%;
+			}
+		}
+
+		.card {
+			overflow: hidden;
+		}
+
+		.card-block .rotate {
+			z-index: 8;
+			float: right;
+			height: 100%;
+		}
+
+		.card-block .rotate i {
+			color: rgba(20, 20, 20, 0.15);
+			position: absolute;
+			left: 0;
+			left: auto;
+			right: -10px;
+			bottom: 0;
+			display: block;
+			-webkit-transform: rotate(-44deg);
+			-moz-transform: rotate(-44deg);
+			-o-transform: rotate(-44deg);
+			-ms-transform: rotate(-44deg);
+			transform: rotate(-44deg);
+		}
+	</style>
+
 </head>
-<style type="text/css">
-	.navbar.bg-light {
-		background-color: #000 !important;
-		transition: ease 0.5s;
-	}
-
-	.user-profile {
-		width: 50px;
-		height: 50px;
-		background-color: #f1f1f1;
-	}
-
-	.navbar .menu-bar {
-		display: inline-block;
-		width: 50px;
-		height: 50px;
-		margin-right: 10px;
-		position: relative;
-		cursor: pointer;
-	}
-
-	.navbar .menu-bar .bars {
-		position: relative;
-		top: 50%;
-		width: 30px;
-		height: 2px;
-		background-color: #fff;
-	}
-
-	.navbar .menu-bar .bars::after {
-		content: "";
-		position: absolute;
-		bottom: -8px;
-		width: 100%;
-		height: 2px;
-		background-color: #fff;
-	}
-
-	.navbar .menu-bar .bars::before {
-		content: "";
-		position: absolute;
-		top: -8px;
-		width: 100%;
-		height: 2px;
-		background-color: #fff;
-	}
-
-	.navbar ul.navbar-nav li.nav-item.ets-right-0 .dropdown-menu {
-		left: auto;
-		right: 0;
-		position: absolute;
-	}
-
-	.side-bar {
-		position: fixed;
-		top: 81px;
-		left: 0;
-		padding: 15px;
-		display: inline-block;
-		width: 100px;
-		background-color: #fff;
-		box-shadow: 0px 0px 8px #ccc;
-		height: 100vh;
-		transition: ease 0.5s;
-		overflow-y: auto;
-	}
-
-	.main-body-content {
-		display: inline-block;
-		padding: 15px;
-		background-color: #eef4fb;
-		height: 100vh;
-		padding-left: 100px;
-		transition: ease 0.5s;
-	}
-
-	.ets-pt {
-		padding-top: 100px;
-	}
-
-	.main-admin.show-menu .side-bar {
-		width: 250px;
-	}
-
-	.main-admin.show-menu .main-body-content {
-		padding-left: 265px;
-	}
-
-	.main-admin.show-menu .navbar .menu-bar .bars {
-		width: 15px;
-	}
-
-	.main-admin.show-menu .navbar .menu-bar .bars::after {
-		width: 10px;
-	}
-
-	.main-admin.show-menu .navbar .menu-bar .bars::before {
-		width: 25px;
-	}
-
-	.main-admin.show-menu .side-bar-links {
-		opacity: 1;
-	}
-
-	.main-admin.show-menu .side-bar .side-bar-icons {
-		opacity: 0;
-	}
-
-	/**** end effacts ****/
-	.side-bar .side-bar-links {
-		opacity: 0;
-		transition: ease 0.5s;
-	}
-
-	.side-bar .side-bar-links ul.navbar-nav li a {
-		font-size: 14px;
-		color: #000;
-		font-weight: 500;
-		padding: 10px;
-	}
-
-	.side-bar .side-bar-links ul.navbar-nav li a i {
-		font-size: 20px;
-		color: #8ac1f6;
-	}
-
-	.side-bar .side-bar-links ul.navbar-nav li a:hover,
-	.side-bar-links ul.navbar-nav li a:focus {
-		text-decoration: none;
-		background-color: #8ac1f6;
-		color: #fff;
-	}
-
-	.side-bar .side-bar-links ul.navbar-nav li a:hover i {
-		color: #fff;
-	}
-
-	.side-bar .side-bar-logo img {
-		width: 100px;
-		height: 100px;
-	}
-
-	.side-bar .side-bar-icons {
-		position: absolute;
-		top: 20px;
-		right: 0;
-		width: 100px;
-		opacity: 1;
-		transition: ease 0.5s;
-	}
-
-	.side-bar .side-bar-icons .side-bar-logo img {
-		width: 50px;
-		height: 50px;
-		object-fit: cover;
-	}
-
-	.side-bar .side-bar-icons .side-bar-logo h5 {
-		font-size: 14px;
-	}
-
-	.side-bar .side-bar-icons .set-width {
-		color: #000;
-		font-size: 32px;
-	}
-
-	.side-bar .side-bar-icons .set-width:hover,
-	.side-bar .side-bar-icons .set-width:focus {
-		color: #8ac1f6;
-		text-decoration: none;
-	}
-</style>
 
 <body>
-	<div id="page-container" class="main-admin">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100">
-			<a class="navbar-brand" href="#"></a>
-			<div id="open-menu" class="menu-bar">
-				<div class="bars"></div>
-			</div>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item dropdown ets-right-0">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img src="" class="img-fluid rounded-circle border user-profile">
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="<?php echo base_url() ?>admin/connect/logout">Logout</a>
-					</div>
+	<nav class="navbar navbar-fixed-top navbar-toggleable-sm navbar-inverse bg-primary mb-3">
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="flex-row d-flex">
+			<a class="navbar-brand mb-1" href="#">Brand</a>
+			<button type="button" class="hidden-md-up navbar-toggler" data-toggle="offcanvas" title="Toggle responsive left sidebar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+		<div class="navbar-collapse collapse" id="collapsingNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">Home</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#features">Features</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#myAlert" data-toggle="collapse">Wow</a>
 				</li>
 			</ul>
-		</nav>
-		<div class="side-bar">
-			<div class="side-bar-links">
-				<div class="side-bar-logo text-center py-3">
-					<img src="" class="img-fluid rounded-circle border bg-secoundry mb-3">
-					<h5>Company Name</h5>
-				</div>
-				<ul class="navbar-nav">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="" data-target="#myModal" data-toggle="modal">About</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container-fluid" id="main">
+		<div class="row row-offcanvas row-offcanvas-left">
+			<div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
+				<ul class="nav flex-column pl-1">
+					<li class="nav-item"><a class="nav-link" href="<?php echo base_url() ?>admin/dashboard/update">Editor</a></li>
 					<li class="nav-item">
-						<a href="<?php echo base_url() ?>" class="nav-links d-block"><i class="fa fa-home pr-2"></i> HOME</a>
+						<a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Reports ▾</a>
+						<ul class="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
+							<li class="nav-item"><a class="nav-link" href="">Sub item</a></li>
+							<li class="nav-item"><a class="nav-link" href="">Sub item</a></li>
+						</ul>
 					</li>
-					<li class="nav-item">
-						<a href="#" class="nav-links d-block"><i class="fa fa-home pr-2"></i> HOME</a>
-					</li>
-					<li class="nav-item">
-						<a href="#" class="nav-links d-block"><i class="fa fa-home pr-2"></i> HOME</a>
-					</li>
-					<li class="nav-item">
-						<a href="#" class="nav-links d-block"><i class="fa fa-home pr-2"></i> HOME</a>
-					</li>
-					<li class="nav-item">
-						<a href="#" class="nav-links d-block"><i class="fa fa-home pr-2"></i> HOME</a>
-					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Export</a></li>
+					<li class="nav-item"><a class="nav-link" href="">Nav item</a></li>
+					<li class="nav-item"><a class="nav-link" href="">Nav item</a></li>
+					<li class="nav-item"><a class="nav-link" href="">Another</a></li>
+					<li class="nav-item"><a class="nav-link" href="">Nav item</a></li>
+					<li class="nav-item"><a class="nav-link" href="">One more</a></li>
 				</ul>
 			</div>
-			<div class="side-bar-icons">
-				<!-- <div class="side-bar-logo text-center py-3">
-	  				<img src="" class="img-fluid rounded-circle border bg-secoundry mb-3">
-	  				<h5>Company Name</h5>
-	  			</div> -->
-				<div class="icons d-flex flex-column align-items-center">
-					<a href="<?php echo base_url() ?>" class="set-width text-center display-inline-block my-1"><i class="fa fa-home"></i></a>
-					<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-users"></i></a>
-					<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-list"></i></a>
-					<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-sticky-note-o"></i></a>
-					<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-file-text"></i></a>
-					<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-sticky-note-o"></i></a>
-					<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-database"></i></a>
-				</div>
+			<!--/col-->
+
+			<div class="col-md-9 col-lg-10 main">
+
+
+
 			</div>
+			<!--/main col-->
 		</div>
-		<div class="main-body-content w-100 ets-pt">
-			<div class="table-responsive bg-light">
-				<table class="table">
-					<tr>
-						<th>Name</th>
-						<th>Surname</th>
-						<th>lorem</th>
-						<th>ipssum</th>
-						<th>Dollor</th>
-					</tr>
-					<tr>
-						<td>Vinay</td>
-						<td>Sharma</td>
-						<td>lorem ipssum dollor dummy</td>
-						<td>lorem ipssum dollor dummy</td>
-						<td>lorem ipssum dollor dummy</td>
-					</tr>
-					<tr>
-						<td>Vinay</td>
-						<td>Sharma</td>
-						<td>lorem ipssum dollor dummy</td>
-						<td>lorem ipssum dollor dummy</td>
-						<td>lorem ipssum dollor dummy</td>
-					</tr>
-					<tr>
-						<td>Vinay</td>
-						<td>Sharma</td>
-						<td>lorem ipssum dollor dummy</td>
-						<td>lorem ipssum dollor dummy</td>
-						<td>lorem ipssum dollor dummy</td>
-					</tr>
-					<tr>
-						<td>Vinay</td>
-						<td>Sharma</td>
-						<td>lorem ipssum dollor dummy</td>
-						<td>lorem ipssum dollor dummy</td>
-						<td>lorem ipssum dollor dummy</td>
-					</tr>
-				</table>
+
+	</div>
+
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">Modal</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+						<span class="sr-only">Close</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					This is a dashboard layout for Bootstrap 4. This is an example of the Modal component which you can use to show content. Any content can be placed inside the modal and it can use the Bootstrap grid classes.
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary-outline" data-dismiss="modal">OK</button>
+				</div>
 			</div>
 		</div>
 	</div>
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-			jQuery("#open-menu").click(function() {
-				if (jQuery('#page-container').hasClass('show-menu')) {
-					jQuery("#page-container").removeClass('show-menu');
-				} else {
-					jQuery("#page-container").addClass('show-menu');
+
+	<script>
+		// sandbox disable popups
+		if (window.self !== window.top && window.name != "view1") {
+			window.alert = function() {
+				/*disable alert*/
+			};
+			window.confirm = function() {
+				/*disable confirm*/
+			};
+			window.prompt = function() {
+				/*disable prompt*/
+			};
+			window.open = function() {
+				/*disable open*/
+			};
+		}
+
+		// prevent href=# click jump
+		document.addEventListener(
+			"DOMContentLoaded",
+			function() {
+				var links = document.getElementsByTagName("A");
+				for (var i = 0; i < links.length; i++) {
+					if (links[i].href.indexOf("#") != -1) {
+						links[i].addEventListener("click", function(e) {
+							console.debug("prevent href=# click");
+							if (this.hash) {
+								if (this.hash == "#") {
+									e.preventDefault();
+									return false;
+								} else {
+									/*
+									    var el = document.getElementById(this.hash.replace(/#/, ""));
+									    if (el) {
+									      el.scrollIntoView(true);
+									    }
+									    */
+								}
+							}
+							return false;
+						});
+					}
 				}
+			},
+			false
+		);
+	</script>
+
+	<!--scripts loaded here-->
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
+
+	<script>
+		$(document).ready(function() {
+			$("[data-toggle=offcanvas]").click(function() {
+				$(".row-offcanvas").toggleClass("active");
 			});
 		});
 	</script>
+
 </body>
 
 </html>
