@@ -124,7 +124,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="flex-row d-flex">
-			<a class="navbar-brand mb-1" href="#">Brand</a>
+			<a class="navbar-brand mb-1" href="#">Palisep Heraldica</a>
 			<button type="button" class="hidden-md-up navbar-toggler" data-toggle="offcanvas" title="Toggle responsive left sidebar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -136,9 +136,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#features">Features</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#myAlert" data-toggle="collapse">Wow</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
@@ -152,6 +149,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<div class="row row-offcanvas row-offcanvas-left">
 			<div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
 				<ul class="nav flex-column pl-1">
+					<li class="nav-item"><a class="nav-link" href="<?php echo base_url() ?>admin/dashboard">Dashboard</a></li>
 					<li class="nav-item"><a class="nav-link" href="<?php echo base_url() ?>admin/dashboard/update">Editor</a></li>
 					<li class="nav-item">
 						<a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Reports ▾</a>
@@ -160,13 +158,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<li class="nav-item"><a class="nav-link" href="">Sub item</a></li>
 						</ul>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Export</a></li>
-					<li class="nav-item"><a class="nav-link" href="">Nav item</a></li>
-					<li class="nav-item"><a class="nav-link" href="">Nav item</a></li>
-					<li class="nav-item"><a class="nav-link" href="">Another</a></li>
-					<li class="nav-item"><a class="nav-link" href="">Nav item</a></li>
-					<li class="nav-item"><a class="nav-link" href="">One more</a></li>
 				</ul>
 			</div>
 			<!--/col-->
